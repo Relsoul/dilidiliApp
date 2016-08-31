@@ -82,7 +82,7 @@
 									self.videoSrc=data.playUrl;
 									
 									mui.plusReady(function(){
-										plus.navigator.setFullscreen(true)
+										
 										
 										plus.key.addEventListener("backbutton",function(){
 											plus.screen.lockOrientation("portrait-primary");
@@ -97,18 +97,19 @@
 											controls:['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'fullscreen']
 										})
 										player[0].on("enterfullscreen",function(){
+											plus.navigator.setFullscreen(true)
 											plus.screen.lockOrientation("landscape");
 											console.log("全屏")
 										})
 										player[0].on("exitfullscreen",function(){
+											plus.navigator.setFullscreen(false)
 											plus.screen.lockOrientation("portrait-primary");
 										})
 										
 										setInterval(function(){
 											console.log(document.webkitFullscreenElement)
 										},3000)
-										
-										
+
 									})
 									console.log(data)
 								})

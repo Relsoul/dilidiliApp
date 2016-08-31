@@ -15,3 +15,18 @@ git clone https://github.com/Relsoul/dilidiliNode.git
 
 # 打包与发布
 参考IDE-发行
+
+# 说明
+本项目基于MUI,项目代码以及文件已经开源,欢迎大家基于此源码二次开发.本人也会不时的更新
+
+
+# 预览初始版本
+[初始版本下载](http://share.weiyun.com/a7402d7ad2f08c7cbe7780313143d685)
+[官网](http://dilidili.relsoul.com) 待制作
+
+# 更新日志
+
+### v0.1 2016-09-01
+
+- 每周番剧功能
+
