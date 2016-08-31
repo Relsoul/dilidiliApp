@@ -117,7 +117,7 @@
 						},
 						ready: function() {
 							var that = this;
-							jq.get("http://192.168.2.14:3000/list" + self.url)
+							jq.get(window.conf.server+"list" + self.url)
 								.done(function(data) {
 									that.items = data.list;
 									that.detail = data.detail;

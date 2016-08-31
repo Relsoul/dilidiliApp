@@ -77,7 +77,7 @@
 						},
 						ready: function() {
 							var self=this;
-							jq.get("http://192.168.2.14:3000/video/" + that.url)
+							jq.get(window.conf.server+"video/" + that.url)
 								.done(function(data) {
 									self.videoSrc=data.playUrl;
 									

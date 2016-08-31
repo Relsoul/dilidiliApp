@@ -1,3 +1,10 @@
+
+window.conf={
+	server:"https://relsoul.applinzi.com/"
+}
+
+
+
 // 获取url中的参数
 function getUrlParam(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -9,6 +16,7 @@ function getUrlParam(name) {
 	}
 }
 
+// Vue模板方法
 function VueInit() {
 
 }
