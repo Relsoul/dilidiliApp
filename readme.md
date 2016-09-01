@@ -30,3 +30,7 @@ git clone https://github.com/Relsoul/dilidiliNode.git
 
 - 每周番剧功能
 
+### v0.1.1 2016-09-01
+
+- 增加重新加载按钮
+因服务器用新浪SAE,所以某些视频需要重新加载 重新加载后点击一下视频播放框即可.
