@@ -21,7 +21,7 @@ git clone https://github.com/Relsoul/dilidiliNode.git
 
 
 # 预览初始版本
-[初始版本下载](http://share.weiyun.com/a7402d7ad2f08c7cbe7780313143d685)
+[版本下载](http://share.weiyun.com/720aaadd64d2f571d3e1c786ceb69277)
 [官网](http://dilidili.relsoul.com) 待制作
 
 # 更新日志
