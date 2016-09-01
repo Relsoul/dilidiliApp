@@ -1,6 +1,6 @@
 
 window.conf={
-	server:"https://relsoul.applinzi.com/"
+	server:"http://dilidili.relsoul.com/"
 }
 
 

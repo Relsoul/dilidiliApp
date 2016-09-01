@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
@@ -43,17 +44,17 @@
 				<div class="mui-content mui-scroll-wrapper">
 					<div class="mui-scroll">
 						<!-- 主界面具体展	示内容 -->
+
 						<div class='detail-wrap'>
-							<video id='vd' :src="videoSrc"  class='video-player'></video>
+							<video id='vd' :src="videoSrc" class='video-player'></video>
 						</div>
+						<p style="margin-top: 20px;">无法载入播放? <button style="vertical-align: middle;" type="button" class="mui-btn mui-btn-success" @click='getData()'>重新加载</button> </p>
+
 					</div>
 				</div>
 			</div>
 			<script type="text/javascript">
 				var jq = jQuery.noConflict();
-//				mui(".mui-scroll-wrapper").scroll({
-//					scrollY: true
-//				})
 
 				var v = new VueInit();
 				v.isPlus = function() {
@@ -73,46 +74,49 @@
 					new Vue({
 						el: "#detailElem",
 						data: {
-							videoSrc:""
+							videoSrc: "",
+							lockLoad:false
+						},
+						methods: {
+							getData: function(url) {
+								url = url || that.url;
+								var self = this;
+								if(self.lockLoad){
+									mui.toast("正在加载...请勿重复点击")
+									return false;
+								}
+								self.lockLoad=true;
+								jq.get(window.conf.server + "video/" + url)
+									.done(function(data) {
+										self.videoSrc = data.playUrl;
+										self.lockLoad=false;
+										console.log(data)
+									})
+							}
 						},
 						ready: function() {
-							var self=this;
-							jq.get(window.conf.server+"video/" + that.url)
-								.done(function(data) {
-									self.videoSrc=data.playUrl;
-									
-									mui.plusReady(function(){
-										
-										
-										plus.key.addEventListener("backbutton",function(){
-											plus.screen.lockOrientation("portrait-primary");
-										})
-										
-										jq(document).on("tap",function(e){
-											console.log(e.target.nodeName)
-										})
-										
-										var el=document.getElementById("vd");
-										var player=plyr.setup(el,{
-											controls:['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'fullscreen']
-										})
-										player[0].on("enterfullscreen",function(){
-											plus.navigator.setFullscreen(true)
-											plus.screen.lockOrientation("landscape");
-											console.log("全屏")
-										})
-										player[0].on("exitfullscreen",function(){
-											plus.navigator.setFullscreen(false)
-											plus.screen.lockOrientation("portrait-primary");
-										})
-										
-										setInterval(function(){
-											console.log(document.webkitFullscreenElement)
-										},3000)
-
-									})
-									console.log(data)
+							var self = this;
+							self.getData();
+							mui.plusReady(function() {
+							
+								plus.key.addEventListener("backbutton", function() {
+									plus.screen.lockOrientation("portrait-primary");
 								})
+
+								var el = document.getElementById("vd");
+								var player = plyr.setup(el, {
+									controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'fullscreen']
+								})
+								player[0].on("enterfullscreen", function() {
+									plus.navigator.setFullscreen(true)
+									plus.screen.lockOrientation("landscape");
+									console.log("全屏")
+								})
+								player[0].on("exitfullscreen", function() {
+									plus.navigator.setFullscreen(false)
+									plus.screen.lockOrientation("portrait-primary");
+								})
+							})
 						}
 					})
 				}
